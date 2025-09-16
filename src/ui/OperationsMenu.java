@@ -137,7 +137,7 @@ public class OperationsMenu {
 	        	break;
 	        }
 	        
-	        int targetId = ui.getInt("Enter the transfer amount (0 TO EXIT): ");
+	        int targetId = ui.getInt("Enter target account id: ");
 	        
 	        if (targetId == 0) {
 	        	break;

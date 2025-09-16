@@ -15,7 +15,8 @@ public final class SavingsAccount extends Account {
 		if (op.getAmount() < 0) 
 			throw new IllegalArgumentException("Deposit amount must be positive");
 		
-		this.balance += op.getAmount();
+		this.setBalance(getBalance() + op.getAmount());
+		this.setBalance(getBalance() + calculateInterest());
 		this.addOperation(op);
 	}
 	
@@ -26,7 +27,8 @@ public final class SavingsAccount extends Account {
         if (balance < op.getAmount()) 
         	throw new IllegalArgumentException("No balance for withdrawal");
         
-        balance -= op.getAmount();
+        setBalance(getBalance() - op.getAmount());
+        setBalance(getBalance() + calculateInterest());
         addOperation(op);
 	}
 
@@ -43,6 +45,7 @@ public final class SavingsAccount extends Account {
         System.out.println("Code: " + getCode());
         System.out.println("Balance: " + getBalance());
         System.out.println("Interest Rate: " + taxInterest * 100 + "%");
+        System.out.println("Interest Earned: " + calculateInterest());
     }
 
 	public double getTaxInterest() {
