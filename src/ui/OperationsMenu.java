@@ -17,30 +17,30 @@ public class OperationsMenu {
 	}
 
 	public boolean show() {
-		this.menu();
+		while (true) {
+			this.menu();
 
-		String choice = ui.getString("Input: ");
+			String choice = ui.getString("Input: ");
 
-		switch (choice) {
-		case "1":
+			switch (choice) {
+			case "1":
 
-			break;
-		case "2":
+				break;
+			case "2":
 
-			break;
-		case "3":
-			break;
-		case "4":
-			showHistory();
-			break;
-		case "5":
-			return true;
-		default:
-			ui.showL("Invalid choice \n");
-			break;
+				break;
+			case "3":
+				break;
+			case "4":
+				showHistory();
+				break;
+			case "5":
+				return true;
+			default:
+				ui.showL("Invalid choice \n");
+				break;
+			}
 		}
-
-		return true;
 	}
 
 	private void menu() {
