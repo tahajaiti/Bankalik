@@ -29,9 +29,21 @@ public class ConsoleUIManager implements IUIManager {
 			this.show(prompt);
 			try {
 	            return Integer.parseInt(scanner.nextLine());
-	        } catch (NumberFormatException e) {
+	        } catch (Exception e) {
 	            this.showL("Invalid number, please try again. \n");
 	        }
+		}
+	}
+	
+	@Override
+	public double getDouble(String prompt) {
+		while(true) {
+			this.show(prompt);
+			try {
+				return Double.parseDouble(scanner.nextLine());
+			} catch (Exception e) {
+	            this.showL("Invalid number, please try again. \n");
+			}
 		}
 	}
 
