@@ -6,13 +6,16 @@ import util.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccountService {
+import contract.IAccountService;
+
+public class AccountService implements IAccountService {
 	
 	private int id = 1;
 	
 	private Map<Integer, Account> accounts = new HashMap<>();
 	private Account account;
 	
+	@Override
 	public Account createAccount(String code, String user, int type) {
 		if (!AccountValidator.isValidCode(code)) {
 			throw new IllegalArgumentException("Invalid code structure, EX: CPT-XXXXX");
@@ -25,18 +28,18 @@ public class AccountService {
 		
 		Account acc;
 		switch(type) {
-		case 1:
-			acc = new SavingsAccount(id,user, code, 
-					Config.DEFAULT_AMOUNT, 
-					Config.DEFAULT_INTEREST);
-			break;
-		case 2:
-			acc = new CurrentAccount(id, user, code, 
-					Config.DEFAULT_AMOUNT, 
-					Config.DEFAULT_OVERDRAFT);
-			break;
-		default:
-            throw new IllegalArgumentException("Invalid account type: " + type);
+			case 1:
+				acc = new SavingsAccount(id,user, code, 
+						Config.DEFAULT_AMOUNT, 
+						Config.DEFAULT_INTEREST);
+				break;
+			case 2:
+				acc = new CurrentAccount(id, user, code, 
+						Config.DEFAULT_AMOUNT, 
+						Config.DEFAULT_OVERDRAFT);
+				break;
+			default:
+	            throw new IllegalArgumentException("Invalid account type: " + type);
 		}
 		
 		accounts.put(id, acc);
@@ -46,6 +49,7 @@ public class AccountService {
 		return acc;
 	}
 	
+	@Override
 	public Account login(Integer id, String code) {
 		Account acc = accounts.get(id);
 		if (acc == null) throw new IllegalArgumentException("Invalid account id");
@@ -57,6 +61,11 @@ public class AccountService {
 		this.setAccount(acc);
 		
 		return acc;
+	}
+	
+	@Override
+	public void logout() {
+		this.setAccount(null);
 	}
 
 	public Account getAccount() {
