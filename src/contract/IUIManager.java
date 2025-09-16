@@ -6,4 +6,5 @@ public interface IUIManager {
 	
 	String getString(String prompt);
 	int getInt(String prompt);
+	double getDouble(String prompt);
 }

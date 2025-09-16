@@ -11,6 +11,7 @@ public interface IAccountService {
 	void logout();
 	
 	Account getAccount();
-	public void setAccount(Account account);
+	Account getAccount(int id);
+	void setAccount(Account account);
 
 }
