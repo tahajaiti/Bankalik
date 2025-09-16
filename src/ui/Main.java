@@ -12,7 +12,6 @@ public class Main {
 		container.register(IAccountService.class, new AccountService());
 		container.register(IUIManager.class, new ConsoleUIManager());
 		
-		
 		Menu menu = new Menu(
 				container.resolve(IAccountService.class),
 				container.resolve(IUIManager.class)

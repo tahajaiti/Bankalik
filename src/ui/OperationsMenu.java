@@ -1,19 +1,24 @@
 package ui;
 
 import contract.IAccountService;
+import contract.IOperationService;
 import contract.IUIManager;
 import model.account.*;
 import model.operation.*;
+import service.OperationService;
+
 import java.util.List;
 
 public class OperationsMenu {
 
 	private IAccountService accService;
 	private IUIManager ui;
+	private IOperationService operationService;
 
 	public OperationsMenu(IAccountService a, IUIManager u) {
 		this.accService = a;
 		this.ui = u;
+		this.operationService = new OperationService(a);
 	}
 
 	public boolean show() {
@@ -24,12 +29,13 @@ public class OperationsMenu {
 
 			switch (choice) {
 			case "1":
-
+				depositMenu();
 				break;
 			case "2":
-
+				transferMenu();
 				break;
 			case "3":
+				withdrawMenu();
 				break;
 			case "4":
 				showHistory();
@@ -63,8 +69,90 @@ public class OperationsMenu {
 		if (ops.isEmpty()) {
 			ui.showL("No operations.");
 		} else {
-			account.getOperations().forEach(op -> ui.showL(op.toString()));
+			for (Operation op : ops) {
+				ui.showL("------------------------------");
+			    ui.showL(op.toString());
+			    ui.showL("------------------------------");
+			}
 		}
 		ui.showL("==============================");
+	}
+	
+	private void depositMenu() {
+		boolean valid = false;
+		Account account = accService.getAccount();
+
+	    while (!valid) {
+	        Double amount = ui.getDouble("Enter the deposit amount (0 TO EXIT): ");
+	        
+	        if (amount == 0) {
+	        	break;
+	        }
+	        
+	        String source = ui.getString("Enter source: ");
+	        
+	        try {
+	        	operationService.desposit(account, amount, source);
+	        	valid = true;
+	        	ui.showL("Operation successful!");
+	        } catch (Exception e) {
+	        	ui.showL("Error: " + e.getMessage());
+			}
+	        
+	    }
+	}
+	
+	private void withdrawMenu() {
+		boolean valid = false;
+		Account account = accService.getAccount();
+
+	    while (!valid) {
+	        Double amount = ui.getDouble("Enter the withdrawal amount (0 TO EXIT): ");
+	        
+	        if (amount == 0) {
+	        	break;
+	        }
+	        
+	        String dist = ui.getString("Enter destination: ");
+	        
+	        try {
+	        	operationService.withdraw(account, amount, dist);
+	        	valid = true;
+	        	ui.showL("Operation successful!");
+	        } catch (Exception e) {
+	        	ui.showL("Error: " + e.getMessage());
+			}
+	        
+	    }
+	}
+	
+	private void transferMenu() {
+		boolean valid = false;
+		Account account = accService.getAccount();
+
+	    while (!valid) {
+	        Double amount = ui.getDouble("Enter the transfer amount (0 TO EXIT): ");
+	        
+	        if (amount == 0) {
+	        	break;
+	        }
+	        
+	        int targetId = ui.getInt("Enter the transfer amount (0 TO EXIT): ");
+	        
+	        if (targetId == 0) {
+	        	break;
+	        }
+	        
+	        String dist = ui.getString("Enter reason: ");
+	        
+	        try {
+	        	operationService.transfer(account, amount, targetId, dist);
+	        	valid = true;
+	        	ui.showL("Operation successful!");
+	        } catch (Exception e) {
+	        	ui.showL("Error: " + e.getMessage());
+			}
+	        
+	    }
 	}
 }
