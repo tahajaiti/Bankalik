@@ -15,4 +15,13 @@ public class Withdrawal extends Operation{
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
+	
+	@Override
+	public String toString() {
+		return "Operation: " +
+		           "type=Withdrawal"+
+		           ", amount=" + amount +
+		           "\n, date=" + date +
+		           ", destination=" + destination;
+	}
 }

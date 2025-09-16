@@ -16,4 +16,13 @@ public class Deposit extends Operation {
 	public void setSource(String source) {
 		this.source = source;
 	}
+	
+	@Override
+	public String toString() {
+		return "Operation: " +
+		           "type=Deposit" +
+		           ", amount=" + amount +
+		           "\n, date=" + date +
+		           ", source=" + source;
+	}
 }
