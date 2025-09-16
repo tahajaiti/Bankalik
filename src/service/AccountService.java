@@ -1,14 +1,14 @@
 package service;
 
 import model.account.*;
-import util.AccountValidator;
+import util.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class AccountService {
 	
-	private int ID = 0;
+	private int id = 1;
 	
 	private Map<Integer, Account> accounts = new HashMap<>();
 	private Account account;
@@ -26,18 +26,22 @@ public class AccountService {
 		Account acc;
 		switch(type) {
 		case 1:
-			acc = new SavingsAccount(ID,user, code, 0, 0.25);
+			acc = new SavingsAccount(id,user, code, 
+					Config.DEFAULT_AMOUNT, 
+					Config.DEFAULT_INTEREST);
 			break;
 		case 2:
-			acc = new CurrentAccount(ID, user, code, 0, 500);
+			acc = new CurrentAccount(id, user, code, 
+					Config.DEFAULT_AMOUNT, 
+					Config.DEFAULT_OVERDRAFT);
 			break;
 		default:
             throw new IllegalArgumentException("Invalid account type: " + type);
 		}
 		
-		accounts.put(ID, acc);
+		accounts.put(id, acc);
 
-		ID++;
+		id++;
 		
 		return acc;
 	}
