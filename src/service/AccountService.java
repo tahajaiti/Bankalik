@@ -71,6 +71,10 @@ public class AccountService implements IAccountService {
 	public Account getAccount() {
 		return account;
 	}
+	
+	public Account getAccount(int id) {
+		return this.accounts.get(id);
+	}
 
 	public void setAccount(Account account) {
 		this.account = account;
