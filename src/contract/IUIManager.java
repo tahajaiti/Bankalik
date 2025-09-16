@@ -1,0 +1,9 @@
+package contract;
+
+public interface IUIManager {
+	void show(String msg);
+	void showL(String msg);
+	
+	String getString(String prompt);
+	int getInt(String prompt);
+}
