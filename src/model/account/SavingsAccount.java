@@ -37,11 +37,13 @@ public final class SavingsAccount extends Account {
 
 	@Override
 	public void showDetails() {
-		System.out.println("Savings Account: " + username);
-        System.out.println("Code: " + code);
-        System.out.println("Balance: " + balance);
-        System.out.println("Interest Rate: " + (taxInterest * 100) + "%");
-	}
+        System.out.println("=== Account Details ===");
+        System.out.println("ID: " + getId());
+        System.out.println("Name: " + getUsername());
+        System.out.println("Code: " + getCode());
+        System.out.println("Balance: " + getBalance());
+        System.out.println("Interest Rate: " + taxInterest * 100 + "%");
+    }
 
 	public double getTaxInterest() {
 		return taxInterest;

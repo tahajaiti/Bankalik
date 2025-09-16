@@ -37,10 +37,12 @@ public final class CurrentAccount extends Account {
 
 	@Override
 	public void showDetails() {
-		System.out.println("Current Account: " + username);
-        System.out.println("Code: " + code);
-        System.out.println("Balance: " + balance);
-        System.out.println("Overdraft limit: " + overdraft);
+		System.out.println("=== Account Details ===");
+        System.out.println("ID: " + getId());
+        System.out.println("Name: " + getUsername());
+        System.out.println("Code: " + getCode());
+        System.out.println("Balance: " + getBalance());
+        System.out.println("Overdraft: -" + overdraft);
 	}
 
 	public double getOverdraft() {
