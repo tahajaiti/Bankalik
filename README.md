@@ -136,11 +136,14 @@ java -jar Bankalik.jar
 # Go inside the project directory
 cd Bankalik
 
+# Create the output folder
+mkdir out
+
 # Compile
-javac -d bin src/**/*.java
+javac -d out -sourcepath src src/main/App.Java
 
 # Run (entry point = main.App)
-java -cp bin main.App
+java -cp out main.App
 ```
 
 ---
@@ -148,7 +151,7 @@ java -cp bin main.App
 ## Screenshots
 
 * Class Diagram
-![Class Diagram](assets/class.svg)
+![Class Diagram](assets/class.png)
 
 * App
 ![Bank App Screenshot](assets/s1.png)
