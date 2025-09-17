@@ -1,10 +1,14 @@
-package ui;
+package main;
 
-import contract.*;
-import util.*;
-import service.*;
+import contract.IAccountService;
+import contract.IDIContainer;
+import contract.IUIManager;
+import service.AccountService;
+import ui.ConsoleUIManager;
+import ui.Menu;
+import util.DI;
 
-public class Main {
+public class App {
 	
 	public static void main(String[] args) {
 		IDIContainer container = new DI();

@@ -13,6 +13,7 @@ public class DI implements IDIContainer {
 	}
 
 	public <T> T resolve(Class<T> type) {
+		@SuppressWarnings("unchecked")
 		T instance = (T) instances.get(type);
 
 		if (instance == null) {
