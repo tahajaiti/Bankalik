@@ -1,6 +1,7 @@
 package ui;
 
-import contract.*;
+import contract.IAccountService;
+import contract.IUIManager;
 
 public class Menu {
 
@@ -29,6 +30,5 @@ public class Menu {
 		}
 
 	}
-
 
 }

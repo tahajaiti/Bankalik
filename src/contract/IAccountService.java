@@ -9,9 +9,11 @@ public interface IAccountService {
 	Account login(Integer id, String code);
 
 	void logout();
-	
+
 	Account getAccount();
+
 	Account getAccount(int id);
+
 	void setAccount(Account account);
 
 }

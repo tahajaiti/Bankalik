@@ -1,7 +1,8 @@
 package util;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+
 import contract.IDIContainer;
 
 public class DI implements IDIContainer {

@@ -1,10 +1,11 @@
 package ui;
 
+import java.util.Scanner;
+
 import contract.IUIManager;
-import java.util.*;
 
 public class ConsoleUIManager implements IUIManager {
-	
+
 	private Scanner scanner = new Scanner(System.in);
 
 	@Override
@@ -25,24 +26,24 @@ public class ConsoleUIManager implements IUIManager {
 
 	@Override
 	public int getInt(String prompt) {
-		while(true) {
+		while (true) {
 			this.show(prompt);
 			try {
-	            return Integer.parseInt(scanner.nextLine());
-	        } catch (Exception e) {
-	            this.showL("Invalid number, please try again. \n");
-	        }
+				return Integer.parseInt(scanner.nextLine());
+			} catch (Exception e) {
+				this.showL("Invalid number, please try again. \n");
+			}
 		}
 	}
-	
+
 	@Override
 	public double getDouble(String prompt) {
-		while(true) {
+		while (true) {
 			this.show(prompt);
 			try {
 				return Double.parseDouble(scanner.nextLine());
 			} catch (Exception e) {
-	            this.showL("Invalid number, please try again. \n");
+				this.showL("Invalid number, please try again. \n");
 			}
 		}
 	}
