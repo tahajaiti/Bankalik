@@ -1,11 +1,13 @@
 package model.operation;
 
+import java.time.format.DateTimeFormatter;
+
 public class Withdrawal extends Operation{
 	private String destination;
 	
 	public Withdrawal(double amount, String destination) {
 		super(amount);
-		this.setDestination((destination != null) ? destination : "Uknown destination");
+		this.setDestination(destination.chars().allMatch(Character::isWhitespace) ? "Uknown" : destination);
 	}
 
 	public String getDestination() {
@@ -18,10 +20,11 @@ public class Withdrawal extends Operation{
 	
 	@Override
 	public String toString() {
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		return "Operation: " +
-		           "type=Withdrawal"+
-		           ", amount=" + amount +
-		           "\n, date=" + date +
-		           ", destination=" + destination;
+		           "type=Deposit |" +
+		           " amount=" + getAmount() +
+		           " | date=" + getDate().format(formatter) +
+		           " | dest=" + getDestination();
 	}
 }
