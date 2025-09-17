@@ -8,12 +8,10 @@ The project is based on **Object-Oriented Programming (OOP)** principles and is 
 ### Features
 
 * Create different types of accounts:
-
   * **Savings Account** (with interest rate and withdrawal rules)
   * **Current Account** (with overdraft limit)
 * Log into an existing account using **ID + account code** (CPT-XXXXX)
 * Perform basic operations:
-
   * **Deposit**
   * **Withdrawal** (with validation rules)
 * View account details (username, balance, operations history)
@@ -33,7 +31,7 @@ This project demonstrates:
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 * **Java 8+** (Core language)
 * **Eclipse IDE** (Project setup and development)
@@ -42,7 +40,7 @@ This project demonstrates:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 src/
@@ -76,7 +74,7 @@ src/
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 Make sure you have:
 
@@ -121,7 +119,18 @@ public class App {
 }
 ```
 
-### 2. Compile & Run Manually
+### 2. Run .jar file directly
+
+```bash
+# Go inside the project directory
+cd Bankalik
+
+# Run
+java -jar Bankalik.jar
+```
+
+
+### 3. Compile & Run Manually
 
 ```bash
 # Go inside the project directory
