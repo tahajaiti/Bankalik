@@ -28,7 +28,6 @@ public final class SavingsAccount extends Account {
 			throw new IllegalArgumentException("No balance for withdrawal");
 
 		setBalance(getBalance() - op.getAmount());
-		setBalance(getBalance() + calculateInterest());
 		addOperation(op);
 	}
 
